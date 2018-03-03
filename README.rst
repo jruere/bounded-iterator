@@ -37,7 +37,8 @@ messages to be processed concurrently but no more than that.
 
 Usage
 =====
-::
+
+.. code-block:: python
 
     it = itertools.count()           # The input iterable.
     it = BoundedIterator(10, it)     # Allows concurrent processing of up to 10 values.
