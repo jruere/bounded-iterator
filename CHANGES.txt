@@ -3,6 +3,7 @@ Revision history
 
 v0.1.2, 2018-03-03
   * Declares compatibility with Python 3.5 and Pypy3.
+  * Adds compatibility with Python 3.4.
 
 v0.1.1, 2018-03-03
   * README now uses reStructuredText instead of Markdown.

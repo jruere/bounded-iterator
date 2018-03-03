@@ -13,6 +13,7 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
@@ -24,8 +25,9 @@ setup(
     author_email="javier@ruere.com.ar",
     zip_safe=True,
     py_modules=['bounded_iterator'],
-    platforms=["POSIX"],
     test_suite="test_bounded_iterator.py",
-    install_requires=[],
+    install_requires=[
+        "typing~=3.6.4 ; python_version < '3.5'",
+    ],
     tests_require=[],
 )
