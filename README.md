@@ -23,10 +23,12 @@ messages to be processed concurrently but no more than that.
 
 ## Usage
 
->> it = itertools.count()           # The input iterable.
->> it = BoundedIterator(10, it)     # Allows concurrent processing of up to 10 values.
->> results = Pool().imap(str, it)   # Will begin consuming `it` and producing results.
->> time.sleep(5)                    # No matter what else we do, no more than 10 results will be available.
->> for res in results:              # Consume normally.
->>   print(res)
->>   it.processed()                 # Acknowledge a value was processed so that a new one can be generated.
+```python
+it = itertools.count()           # The input iterable.
+it = BoundedIterator(10, it)     # Allows concurrent processing of up to 10 values.
+results = Pool().imap(str, it)   # Will begin consuming `it` and producing results.
+time.sleep(5)                    # No matter what else we do, no more than 10 results will be available.
+for res in results:              # Consume normally.
+  print(res)
+  it.processed()                 # Acknowledge a value was processed so that a new one can be generated.
+```
