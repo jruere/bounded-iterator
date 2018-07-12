@@ -1,6 +1,6 @@
-===================
-concurrent-iterator
-===================
+================
+bounded-iterator
+================
 
 .. image:: https://api.shippable.com/projects/5a9adb0da4261106000330ef/badge?branch=master
     :target: https://app.shippable.com/github/jruere/bounded-iterator
