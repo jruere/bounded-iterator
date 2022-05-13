@@ -2,8 +2,7 @@ import collections
 from threading import BoundedSemaphore
 from typing import Iterable, Iterator, TypeVar
 
-
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class BoundedIterator(collections.Iterator):
@@ -30,7 +29,7 @@ class BoundedIterator(collections.Iterator):
         :raises TimeoutError: if timeout is given and no value is acknowledged in the mean time.
         """
         if not self._sem.acquire(timeout=timeout):
-            raise TimeoutError('Too many values un-acknowledged.')
+            raise TimeoutError("Too many values un-acknowledged.")
 
         return next(self._it)
 

@@ -15,7 +15,6 @@ def _sleep(secs):
 
 
 class BoundedIteratorTest(unittest.TestCase):
-
     def test_when_the_iterable_is_empty_then_it_produces_no_results(self):
         subject = BoundedIterator(10, it=())
         res = list(subject)
