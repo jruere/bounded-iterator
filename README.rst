@@ -47,3 +47,13 @@ Usage
     for res in results:              # Consume normally.
       print(res)
       it.processed()                 # Acknowledge a value was processed so that a new one can be generated.
+
+
+Development
+===========
+
+Setup pre-commit hooks and you are ready to go.
+
+.. code-block:: bash
+
+    pre-commit install --install-hooks
