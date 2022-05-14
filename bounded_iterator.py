@@ -1,11 +1,10 @@
-import collections
 from threading import BoundedSemaphore
 from typing import Iterable, Iterator, TypeVar
 
 T = TypeVar("T")
 
 
-class BoundedIterator(collections.Iterator):
+class BoundedIterator(Iterator):
     """Limits the number of values to yield until yielded values are
     acknowledged.
     """
