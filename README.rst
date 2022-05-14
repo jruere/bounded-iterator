@@ -2,20 +2,11 @@
 bounded-iterator
 ================
 
-.. image:: https://api.shippable.com/projects/5a9adb0da4261106000330ef/badge?branch=master
-    :target: https://app.shippable.com/github/jruere/bounded-iterator
-    :alt: Run Status
-
-.. image:: https://api.shippable.com/projects/5a9adb0da4261106000330ef/coverageBadge?branch=master
-    :target: https://app.shippable.com/github/jruere/bounded-iterator
-    :alt: Coverage Badge
-
 .. image:: https://img.shields.io/pypi/pyversions/bounded-iterator.svg
     :target: https://pypi.python.org/pypi/bounded-iterator/
     :alt: Supported Python versions
 
 .. image:: https://img.shields.io/pypi/l/bounded-iterator.svg
-    :target: https://app.shippable.com/github/jruere/bounded-iterator
     :alt: License
 
 Intro
