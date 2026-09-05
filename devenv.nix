@@ -69,11 +69,11 @@ in
       exec = "pyproject-build --sdist --wheel --outdir dist";
     };
 
-#     "publish:upload" = {
-#       description = "Build and upload the package to PyPI";
-#       after = [ "publish:build" "devenv:enterTest" ];
-#       exec = "twine upload dist/*";
-    # };
+    "publish:upload" = {
+      description = "Build and upload the package to PyPI";
+      after = [ "publish:build" "test:all-versions" ];
+      exec = "twine upload dist/*";
+    };
   };
 
   # https://devenv.sh/git-hooks/
