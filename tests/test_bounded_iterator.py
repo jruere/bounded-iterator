@@ -100,15 +100,23 @@ class BoundedIteratorTest(unittest.TestCase):
 
         self.assertEqual(0, result)
 
-    def test_when_bound_is_zero_then_it_always_times_out(self) -> None:
-        subject = BoundedIterator(0, count())
+    def test_when_bound_is_zero_then_it_raises_assertion_error(self) -> None:
+        with self.assertRaisesRegex(AssertionError, "0"):
+            BoundedIterator(0, count())
 
-        with self.assertRaises(TimeoutError):
-            subject.next(timeout=0.01)
-
-    def test_when_bound_is_negative_then_it_raises_value_error(self) -> None:
-        with self.assertRaises(ValueError):
+    def test_when_bound_is_negative_then_it_raises_assertion_error(self) -> None:
+        with self.assertRaisesRegex(AssertionError, "-1"):
             BoundedIterator(-1, count())
+
+    def test_when_exhausted_repeatedly_then_it_always_raises_stop_iteration(self) -> None:
+        subject = BoundedIterator(10, [99])
+
+        first = next(subject)
+
+        self.assertEqual(99, first)
+        for _ in range(12):
+            with self.assertRaises(StopIteration):
+                subject.next(timeout=0.01)
 
     def test_when_consumer_blocks_then_processed_unblocks_it(self) -> None:
         subject = BoundedIterator(1, count())

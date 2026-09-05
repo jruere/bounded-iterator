@@ -15,6 +15,8 @@ class BoundedIterator(Iterator[T]):
     """
 
     def __init__(self, bound: int, it: Iterable[T]) -> None:
+        assert bound > 0, f"bound must be positive, got {bound}."
+
         self._it = iter(it)
 
         self._sem = BoundedSemaphore(bound)
@@ -35,7 +37,11 @@ class BoundedIterator(Iterator[T]):
         if not self._sem.acquire(timeout=timeout):
             raise TimeoutError("Too many values un-acknowledged.")
 
-        return next(self._it)
+        try:
+            return next(self._it)
+        except BaseException:
+            self._sem.release()
+            raise
 
     def processed(self) -> None:
         """Acknowledges one value allowing another one to be yielded.
