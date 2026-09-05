@@ -96,7 +96,7 @@ in
     yamlfmt.enable = true;
 
 # Python.
-    #black.enable = true;
+    black.enable = true;
     ruff.enable = true;
     mypy.enable = true;
   };
