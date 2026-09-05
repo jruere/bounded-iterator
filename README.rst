@@ -19,8 +19,8 @@ incrementally and will yield results as they become available.
 This is wonderful as it allows to process inputs or results larger than available
 memory.
 
-It has an important flaw which is that it does not limit the number of results
-that are not consumed. This causes it to use memory without bound.
+It has the important flaw that it does not limit the number of results
+that are buffered. This causes it to use memory without bound.
 
 This package implements a wrapper over an iterable which will limit the number
 of results generated until they are acknowledged. It allows a number of
@@ -38,13 +38,3 @@ Usage
     for res in results:              # Consume normally.
       print(res)
       it.processed()                 # Acknowledge a value was processed so that a new one can be generated.
-
-
-Development
-===========
-
-Setup pre-commit hooks and you are ready to go.
-
-.. code-block:: bash
-
-    pre-commit install --install-hooks

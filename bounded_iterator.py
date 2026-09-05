@@ -1,26 +1,31 @@
+from __future__ import annotations
+
+from collections.abc import Iterable, Iterator
 from threading import BoundedSemaphore
-from typing import Iterable, Iterator, TypeVar
+from typing import TypeVar
+
+from typing_extensions import Self
 
 T = TypeVar("T")
 
 
-class BoundedIterator(Iterator):
+class BoundedIterator(Iterator[T]):
     """Limits the number of values to yield until yielded values are
     acknowledged.
     """
 
-    def __init__(self, bound, it: Iterable[T]):
+    def __init__(self, bound: int, it: Iterable[T]) -> None:
         self._it = iter(it)
 
         self._sem = BoundedSemaphore(bound)
 
-    def __iter__(self) -> Iterator[T]:
+    def __iter__(self) -> Self:
         return self
 
     def __next__(self) -> T:
         return self.next()
 
-    def next(self, timeout=None) -> T:
+    def next(self, timeout: float | None = None) -> T:
         """Returns the next value from the iterable.
 
         This method is not thread-safe.
@@ -32,7 +37,7 @@ class BoundedIterator(Iterator):
 
         return next(self._it)
 
-    def processed(self):
+    def processed(self) -> None:
         """Acknowledges one value allowing another one to be yielded.
 
         This method is thread-safe.

@@ -1,23 +1,13 @@
 [tool.black]
 line-length = 100
-target-version = ['py36']
-preview = true
-
-[tool.isort]
-skip_gitignore = true
-balanced_wrapping = true
-include_trailing_comma = true
-py_version = 36
-line_length = 100
-multi_line_output = 3
-use_parentheses = true
-order_by_type = false
+target-version = ['py310']
+preview = false
 
 [tool.coverage.run]
 source = ["bounded_iterator"]
 
 [tool.mypy]
-python_version = 3.6
+python_version = '3.10'
 
 files = "."
 exclude = "build"
@@ -25,6 +15,7 @@ exclude = "build"
 # Display the codes needed for # type: ignore[code] annotations.
 show_error_codes = true
 
+#strict = true
 # Options to make the checking stricter.
 check_untyped_defs = true
 disallow_untyped_defs = true
@@ -46,13 +37,12 @@ ignore_missing_imports = true
 # Warn of unreachable or redundant code.
 warn_unreachable = true
 
-[[tool.mypy.overrides]]
-module = "tasks"
+[tool.ruff]
+target-version = "py39"
+fix = true
+force-exclude = true
+line-length = 100
 
-# Invoke does not allow typing annotations.
-disallow_untyped_defs = false
-
-[[tool.mypy.overrides]]
-module = "tests.*"
-# Tests methods are low value.
-disallow_untyped_defs = false
+# [build-system]
+# requires = ["setuptools", "wheel"]
+# build-backend = "setuptools.build_meta"
