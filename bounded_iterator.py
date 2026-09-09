@@ -7,6 +7,8 @@ from typing import TypeVar
 
 from typing_extensions import Self
 
+__all__ = ["BoundedIterator"]
+
 T = TypeVar("T")
 
 
