@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterable, Iterator
+from operator import length_hint
 from threading import BoundedSemaphore
 from typing import TypeVar
 
@@ -26,6 +27,9 @@ class BoundedIterator(Iterator[T]):
 
     def __next__(self) -> T:
         return self.next()
+
+    def __length_hint__(self) -> int:
+        return length_hint(self._it)
 
     def next(self, timeout: float | None = None) -> T:
         """Returns the next value from the iterable.

@@ -50,6 +50,20 @@ class BoundedIteratorTest(unittest.TestCase):
         with self.assertRaises(StopIteration):
             next(subject)
 
+    def test_when_the_underlying_iterator_has_a_length_hint_then_it_returns_the_remaining_length(
+        self,
+    ) -> None:
+        subject = BoundedIterator(10, iter([0, 1, 2]))
+
+        self.assertEqual(3, subject.__length_hint__())
+        self.assertEqual(0, next(subject))
+        self.assertEqual(2, subject.__length_hint__())
+
+    def test_when_the_underlying_iterator_has_no_length_hint_then_it_returns_zero(self) -> None:
+        subject = BoundedIterator(10, count())
+
+        self.assertEqual(0, subject.__length_hint__())
+
     def test_when_bound_is_full_then_it_raises_timeout_before_exhaustion(self) -> None:
         subject = BoundedIterator(2, [0, 1])
 
