@@ -1,6 +1,30 @@
 Revision history
 ----------------
 
+Unreleased
+  * Define `__all__` in `bounded_iterator`.
+  * Add length hint support via `__length_hint__`.
+  * Replace setup.py with pyproject.toml.
+  * Bugfix: fixed slot leak.
+  * Extends tests to improve coverage.
+  * Remove dead code.
+
+v1.0.2, 2022-05-14
+  * Declare support for Python 3.8 & 3.9.
+
+v1.0.1, 2022-05-14
+  * Declare support for Python 3.10.
+  * Fix module for Python 3.10.
+  * Classify as production/stable instead of alpha.
+  * Remove unnecessary requirement.
+
+v1.0.0, 2022-05-13
+  * Drop support for Python 3.4 & 3.5, add 3.7.
+  * Reformat code.
+  * Change to pyproject.toml.
+  * Fixes project name in README.
+  * Fixes classifier for PyPy.
+
 v0.1.2, 2018-03-03
   * Declares compatibility with Python 3.5 and Pypy3.
   * Adds compatibility with Python 3.4.
